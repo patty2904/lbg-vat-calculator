@@ -7,6 +7,16 @@ pipeline {
 				git branch: 'main', url: 'https://github.com/patty2904/lbg-vat-calculator.git'
 			}
 		}
+		stage('Install'){
+			steps {
+				sh "npm install"
+			}
+		}
+		stage('Test'){
+			steps {
+				sh "npm test"
+			}
+		}
 		stage('SonarQube Analysis'){
 			environment {
 				scannerHome = tool 'sonarqube'
